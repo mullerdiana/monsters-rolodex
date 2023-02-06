@@ -24,8 +24,16 @@ class App extends Component {
           </p>
           <button
             onClick={() => {
-              this.setState({ name: {firstName:"Andrei", lastName: "Neagoie"} });
-              console.log(this.state);
+              this.setState(
+                () => {
+                  // some function that return an object than we wanna shallow merge
+                  return { name: { firstName: "Andrei", lastName: "Neagoie" } };
+                },
+                // this second callback gonna run only after the previous one be executed
+                () => {
+                  console.log(this.state);
+                }
+              );
             }}
           >
             Change name
