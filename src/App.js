@@ -8,37 +8,25 @@ class App extends Component {
     super();
 
     this.state = {
-      name: { firstName: "Diana", lastName: "Müller" },
-      company: "ZTM",
+      monsters: [
+        { id: 12e31, name: "Linda" },
+        { id: 12e32, name: "Frank" },
+        { id: 12e33, name: "Jacky" },
+        { id: 12e33, name: "Andrei" },
+      ],
     };
   }
 
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Hi, {this.state.name.firstName} {this.state.name.lastName}, I work
-            at {this.state.company}{" "}
-          </p>
-          <button
-            onClick={() => {
-              this.setState(
-                () => {
-                  // some function that return an object than we wanna shallow merge
-                  return { name: { firstName: "Andrei", lastName: "Neagoie" } };
-                },
-                // this second callback gonna run only after the previous one be executed
-                () => {
-                  console.log(this.state);
-                }
-              );
-            }}
-          >
-            Change name
-          </button>
-        </header>
+        {this.state.monsters.map((monster) => {
+          return (
+            <div key={monster.id}>
+              <h1>{monster.name}</h1>
+            </div>
+          );
+        })}
       </div>
     );
   }
