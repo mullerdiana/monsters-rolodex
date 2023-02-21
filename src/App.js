@@ -1,15 +1,13 @@
 import { useState, useEffect } from "react";
 
-import CardList from "./components/card-list/card-list.component";
-import Searchbox from "./components/search-box/search-box.component";
+import {CardList} from "./components/card-list/card-list.component";
+import {Searchbox} from "./components/search-box/search-box.component";
 import "./App.css";
 
 export const App = () => {
   const [monsters, setMonsters] = useState([]);
   const [searchField, setSearchField] = useState("");
   const [filteredMonsters, setFilteredMonsters] = useState(monsters);
-
-  console.log("render");
 
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/users")
